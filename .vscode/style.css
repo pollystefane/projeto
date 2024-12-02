@@ -1,0 +1,174 @@
+* {
+  /*seletor universal - todos as margens que existem por defeito serão resetadas*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color: white; /*text-color: é um nome da cariável que criei para definir a cor do texto padrão que é branca*/
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover:  rgba(255, 255, 255, 0.05);
+  --highlight-color: rgba(255, 255, 255, 0.2); 
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover:  rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+
+}
+
+body {
+  background-image: var(--bg-url);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+}
+
+body * {
+  /* o '*' acima é um seletor universal, significa que vai aplicar para todo os elementos dentro do body*/
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  /*primeira caixa*/
+  width: 360px;
+  /*retirar a caixa heigh para que as caixas que estão dentro fiquem fluidas dentro da caixa maior*/
+  /*height: 712px;*/
+  /*border: 1px solid red;*/
+  /*posso retirar a borda, foi só para visualizar*/
+  /*com esses tres parametros acima, a caixa não está alinhada ao meio, por isso preciso da propriedade margin: auto*/
+  margin: 56px auto 0px;
+  /*outra maneira de colocar as margens: 
+  margin: auto;
+  margin-top: 56px; */
+  padding: 0 24px;
+}
+
+/*profile*/
+
+#profile {
+  /*img é um elemento inline, e em elementos inline não é possivel aplicar margin: auto para centralizar. Dessa maneira, criando #profile é possivel centralizar a img sem precisar forçar display: block*/
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  /*display: block*/
+  /*como criei um profile acima em text-align não é preciso forçar isso para centralizar*/
+  width: 112px;
+}
+
+#profile p {
+  font-weight: 500;
+  /*font-size: 16px; */
+  /*por padrão os navegadires já tem o font size de 16px, por isso não precisa colocar*/
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/*switch*/
+
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+  
+}
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius:  50%; 
+  position: absolute ;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.light #switch button {
+   right: 0;
+   left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: var(--stroke-color);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px ;
+}
+
+/*links*/
+
+ul {
+  list-style: none; /*tirar os pontinhos que havia ficado na lista*/
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0; /*24 em cima e em baixo e 0 nas laterais*/
+}
+
+ul li a {
+  /*ul li a pq o a vai fazer ocupar somente os espaços das letras, sem o a fica uma caixa maior*/
+  /*border: 1px solid red;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 16px 24px;
+  background: var(--surface-color); 
+  /*rgba: red green blue alpha - de zero a 55 sendo 0 a cor mais escura (preto) 255 mais forte que tem daquela cor - a quarta propriedade (alpha) é a transparencia (vai de 0.0 até 1.0) a cor solicitada, quando é 255 em tudo, torna-se um branco*/
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px; /*arredondamento de borda*/
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  /*pq para algumas versoes de browser é preciso colocar esse webkit na frente - verificar no caniuse.com*/
+  text-decoration: none; /*tirar o sublinhado que estava em baixo das letras*/
+  font-weight: 500;
+
+  transition: backgroud 0.2s; /*essa transition tem haver com o comando abaixo ul li a:hover - deixa a transição mais suave*/
+}
+
+/*pseudo-seletor - quando passa o mouse por cima das caixas elas se destacam*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/*social links*/
+#social-links {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+  font-size: 24px;
+}
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: backgroud 0.2s;
+  border-radius: 50%; /*50% é um circulo perfeito - não deixou bem no centro do circulo o link, por isso, os comandos acima */
+}
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center ;
+}
