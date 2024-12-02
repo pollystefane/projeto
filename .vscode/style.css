@@ -41,12 +41,14 @@ body * {
 
 #container {
   /*primeira caixa*/
-  width: 360px;
+  /*width: 360px;*/
   /*retirar a caixa heigh para que as caixas que estão dentro fiquem fluidas dentro da caixa maior*/
   /*height: 712px;*/
   /*border: 1px solid red;*/
   /*posso retirar a borda, foi só para visualizar*/
   /*com esses tres parametros acima, a caixa não está alinhada ao meio, por isso preciso da propriedade margin: auto*/
+  width: 100%; /*vai ser sempre 100% até que alcance o maximo de 588px*/
+  max-width: 588px; /*vai se adaptar a um dispositivo até ao maximo de 588ox*/
   margin: 56px auto 0px;
   /*outra maneira de colocar as margens: 
   margin: auto;
